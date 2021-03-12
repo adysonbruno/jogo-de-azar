@@ -24,10 +24,23 @@
             font-weight: 900;
         }
 
-        div.player {
+        div.game {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        div.player {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            text-align: end;
+        }
+
+        div.cpu {
+            width: 30%;
+            flex-direction: column;
+            text-align: start;
         }
 
         div.buttons-colors {
@@ -37,12 +50,12 @@
         }
 
         #player_plays {
-            width: 25%;
+            width: 100%;
             height: 200px;
         }
 
         #cpu_plays {
-            width: 25%;
+            width: 100%;
             height: 200px;
         }
 
@@ -119,10 +132,18 @@
 
 <body>
     <h1>Rock, Paper or Scissors?</h1>
-    <div class="player">
-        <div id="player_plays" class="player-paper paper"></div>
+    <div class="game">
+        <div class="player">
+            <h2>PLAYER</h2>
+            <div id="player_plays" class="player-paper paper"></div>
+        </div>
+
         <div id="versus"></div>
-        <div id="cpu_plays" class="cpu-paper paper"></div>
+        <div class="cpu">
+            <h2>CPU</h2>
+            <div id="cpu_plays" class="cpu-paper paper"></div>
+        </div>
+
         <div class="player_buttons">
             <button id="player-paper_button">Papel</button>
             <button id="player-rock_button">Pedra</button>
