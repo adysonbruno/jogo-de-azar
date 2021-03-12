@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock, Paper or Scissors?</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 30px;
+            margin: 10px;
+            font-size: 30px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-variant-caps: small-caps;
+            font-family: monospace;
+            font-weight: 900;
+        }
+
+        div.player {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        div.buttons-colors {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #player_plays {
+            width: 25%;
+            height: 200px;
+        }
+
+        #cpu_plays {
+            width: 25%;
+            height: 200px;
+        }
+
+        #versus {
+            width: 25%;
+            height: 200px;
+            background-image: url(assets/imgs/versus.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .player-paper {
+            background-image: url(assets/imgs/Papel.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotateY(180deg);
+        }
+
+        .player-rock {
+            background-image: url(assets/imgs/Pedra.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotateY(180deg)
+        }
+
+        .player-scissors {
+            background-image: url(assets/imgs/Tesoura.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+        }
+
+        .cpu-paper {
+            background-image: url(assets/imgs/Papel.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .cpu-rock {
+            background-image: url(assets/imgs/Pedra.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .cpu-scissors {
+            background-image: url(assets/imgs/Tesoura.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotateY(180deg);
+            background-position: right;
+        }
+
+        .player_buttons {
+            width: 100%;
+            margin: 50px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        #player-paper_button {
+            background-color: red;
+        }
+
+        #player-rock_button {
+            background-color: brown;
+        }
+
+        #player-scissors_button {
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Rock, Paper or Scissors?</h1>
+    <div class="player">
+        <div id="player_plays" class="player-paper paper"></div>
+        <div id="versus"></div>
+        <div id="cpu_plays" class="cpu-paper paper"></div>
+        <div class="player_buttons">
+            <button id="player-paper_button">Papel</button>
+            <button id="player-rock_button">Pedra</button>
+            <button id="player-scissors_button">Tesoura</button>
+        </div>
+        <h2 id="game_result"></h2>
+    </div>
+
+    <script>
+
+        function classCpu() {
+            const cpu_plays = document.getElementById("cpu_plays");
+            let play = cpuPlays();
+            cpu_plays.className = "";
+            cpu_plays.classList.add("cpu-" + play, play);
+        }
+
+
+        function cpuPlays() {
+            let plays = ["rock", "paper", "scissors"]
+            return plays[getRandomBetween0AndTwo()];
+        }
+
+        function getRandomBetween0AndTwo() {
+            return Math.floor(Math.random() * (3));
+        }
+
+
+        const player_plays = document.getElementById("player_plays");
+
+        const playerPaper_button = document.getElementById("player-paper_button");
+        playerPaper_button.onclick = function () {
+            player_plays.className = "";
+            player_plays.classList.add("player-paper", "paper");
+            classCpu()
+            let gameReult = document.getElementById("game_result");
+            gameReult.innerText = game()
+        };
+
+        const playerRock_button = document.getElementById("player-rock_button");
+        playerRock_button.onclick = function () {
+            player_plays.className = "";
+            player_plays.classList.add("player-rock", "rock");
+            classCpu()
+            let gameReult = document.getElementById("game_result");
+            gameReult.innerText = game()
+        };
+
+        const playerScissors_button = document.getElementById("player-scissors_button");
+        playerScissors_button.onclick = function () {
+            player_plays.className = "";
+            player_plays.classList.add("player-scissors", "scissors");
+            classCpu()
+            let gameReult = document.getElementById("game_result");
+            gameReult.innerText = game()
+        };
+
+        function getClassPlayer() {
+            let divPlayer = document.getElementById('player_plays');
+            let classPlayer = divPlayer.classList[1];
+            return classPlayer;
+        }
+
+        function game() {
+            let cpuPlays = document.getElementById("cpu_plays");
+            cpuPlaysClass = cpuPlays.classList[1];
+
+            let playerPlays = document.getElementById('player_plays');
+            playerPlaysClass = playerPlays.classList[1];
+
+            if (cpuPlaysClass === playerPlaysClass) {
+                return "Empate";
+            } else if (playerPlaysClass === "rock") {
+                if (cpuPlaysClass === "scissors") {
+                    return "Você Ganhou";
+                } else if (cpuPlaysClass === "paper") {
+                    return "Você Perdeu";
+                }
+            } else if (playerPlaysClass === "paper") {
+                if (cpuPlaysClass === "rock") {
+                    return "Você Ganhou";
+                } else if (cpuPlaysClass === "scissors") {
+                    return "Você Perdeu";
+                }
+            } else if (playerPlaysClass === "scissors") {
+                if (cpuPlaysClass === "paper") {
+                    return "Você Ganhou";
+                } else if (cpuPlaysClass === "rock") {
+                    return "Você Perdeu";
+                }
+            }
+
+        }
+    </script>
+    </script>
+</body>
+
+</html>
