@@ -1,4 +1,13 @@
+html, body, div, h1{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: burlywood;
 }
 
@@ -7,9 +16,8 @@ h1 {
 }
 
 button {
-    padding: 10px 30px;
-    margin: 10px;
-    font-size: 30px;
+    padding: 15px 35px;
+    margin: 0 10px;
     border: none;
     border-radius: 5px;
     color: white;
@@ -20,21 +28,28 @@ button {
 
 div.game {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 div.player {
-    width: 30%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    text-align: end;
+    align-items: center;
 }
 
 div.cpu {
-    width: 30%;
+    width: 100%;
+    display: flex;
     flex-direction: column;
-    text-align: start;
+    align-items: center;
+}
+
+h2{
+    text-align: center;
 }
 
 div.buttons-colors {
@@ -44,18 +59,18 @@ div.buttons-colors {
 }
 
 #player_plays {
-    width: 100%;
-    height: 200px;
+    width: 130px;
+    height: 100px;
 }
 
 #cpu_plays {
-    width: 100%;
-    height: 200px;
+    width: 130px;
+    height: 100px;
 }
 
 #versus {
-    width: 25%;
-    height: 200px;
+    width: 130px;
+    height: 90px;
     background-image: url(../imgs/versus.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -105,7 +120,7 @@ div.buttons-colors {
 
 .player_buttons {
     width: 100%;
-    margin: 50px 0;
+    margin: 20px 0;
     display: flex;
     justify-content: center;
 }
@@ -120,4 +135,49 @@ div.buttons-colors {
 
 #player-scissors_button {
     background-color: gray;
+}
+
+@media screen and (min-width: 768px) {
+
+    button {
+        padding: 10px 30px;
+        margin: 10px;
+        font-size: 30px;
+    }
+
+    div.game {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    div.player {
+        width: 30%;
+        text-align: end;
+    }
+
+    div.cpu {
+        width: 30%;
+        text-align: start;
+    }
+
+    #player_plays {
+        width: 100%;
+        height: 200px;
+    }
+
+    #cpu_plays {
+        width: 100%;
+        height: 200px;
+    }
+
+    #versus {
+        width: 25%;
+        height: 200px;
+    }
+
+    .player_buttons {
+        margin: 50px 0;
+    }
 }
